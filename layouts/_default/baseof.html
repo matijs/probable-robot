@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   {{ .Hugo.Generator }}
-  <title>{{ .Site.Title }}</title>
+  <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+  <link rel="stylesheet" href="/main.css">
  </head>
  <body>
   {{ block "main" . }}
