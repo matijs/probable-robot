@@ -2,3 +2,8 @@ baseURL = "http://example.org/"
 languageCode = "en-gb"
 title = "Example"
 GitInfo = true
+Name = "Foo"
+
+pygmentscodefences = true
+pygmentsuseclasses = true
+pygmentsoptions = "linenos=true"

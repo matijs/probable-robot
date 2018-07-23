@@ -1,2 +1,15 @@
+{{ define "title" -}}
+ {{ .Title }} — {{ .Site.Title }}
+{{- end }}
+
 {{ define "main" }}
+ <main role="main">
+  <header>
+   <h1>{{ .Title }}</h1>
+   <time datetime="{{ .PublishDate.Format "2006-01-02" }}">
+    {{- .PublishDate.Format "2 january, 2006" -}}
+   </time>
+  </header>
+  {{ .Content }}
+ </main>
 {{ end }}
