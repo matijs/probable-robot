@@ -1,0 +1,5 @@
+{{ define "main" }}
+ {{ range first 10 .Pages }}
+  <a href="{{ .URL }}">{{ .Title }}</a>
+ {{ end }}
+{{ end }}
