@@ -21,6 +21,11 @@ pre {
   padding: .25em .5em;
 }
 
+p code {
+  border: 1px dotted darkgrey;
+  padding: .125em .25em;
+}
+
 a {
   color: teal;
 }
