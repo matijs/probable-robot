@@ -18,6 +18,8 @@ body {
 
 pre {
   font-size: 120%;
+  max-width: 100%;
+  overflow: auto;
   padding: .25em .5em;
 }
 
