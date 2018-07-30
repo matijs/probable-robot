@@ -1,7 +1,7 @@
 baseURL = "http://example.org/"
 languageCode = "en-gb"
 title = "Example"
-GitInfo = true
+enableGitInfo = true
 
 pygmentsUseClassic = true
 pygmentsCodefencesGuessSyntax = true
