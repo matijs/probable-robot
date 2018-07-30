@@ -12,5 +12,6 @@ body {
   font-family: sans-serif;
   line-height: 1.5;
   margin: 0 auto;
-  max-width: 48em;
+  max-width: 50em;
+  padding: 1em;
 }
