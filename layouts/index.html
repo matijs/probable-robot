@@ -1,5 +1,7 @@
 {{ define "main" }}
- {{ range first 10 .Pages }}
-  <a href="{{ .URL }}">{{ .Title }}</a>
- {{ end }}
+ <ul>
+  {{ range first 5 .Pages }}
+   <li><a href="{{ .URL }}">{{ .Title }}</a></li>
+  {{ end }}
+ </ul>
 {{ end }}
