@@ -1,6 +1,6 @@
 baseURL = "http://example.org/"
 languageCode = "en-gb"
-title = "Example"
+title = "Probable Robot"
 enableGitInfo = true
 
 pygmentsUseClassic = true
