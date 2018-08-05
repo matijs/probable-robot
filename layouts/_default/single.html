@@ -6,16 +6,7 @@
  <main role="main">
   <header>
    <h1>{{ .Title }}</h1>
-   <p>Published
-    <time datetime="{{ .PublishDate.Format "2006-01-02" }}">
-     {{- .PublishDate.Format "2 January, 2006" -}}
-    </time>
-   </p>
-   <p>Last updated
-    <time datetime="{{ .Lastmod.Format "2006-01-02" }}">
-     {{- .Lastmod.Format "2 January, 2006" -}}
-    </time>
-   </p>
+   {{ partial "meta.html" . }}
   </header>
   {{ .Content }}
  </main>

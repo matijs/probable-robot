@@ -1,7 +1,17 @@
 {{ define "main" }}
+ {{ range first 1 .Pages }}
+  <article>
+   <header>
+    <h1>{{ .Title }}</h1>
+    {{ partial "meta.html" . }}
+   </header>
+   {{ .Content }}
+  </article>
+ {{ end }}
+ <h2>other posts</h2>
  <ul>
-  {{ range first 5 .Pages }}
-   <li><a href="{{ .URL }}">{{ .Title }}</a></li>
-  {{ end }}
+   {{ range first 6 .Pages | after 1 }}
+    <li><a href="{{ .URL }}">{{ .Title }}</a></li>
+   {{ end }}
  </ul>
 {{ end }}
