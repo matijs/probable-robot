@@ -7,8 +7,6 @@ tags:
   - javascript
   - tools
 ---
-## Creating bundles with webpack
-
 webpack is a bundler so it is good at bundling things. Out of the box it only
 understands JavaScript's `import` and `require` statements and because of that
 can only bundle JavaScript. If you give it an entry point[^1], it will start
