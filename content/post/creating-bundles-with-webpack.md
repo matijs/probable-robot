@@ -7,7 +7,7 @@ tags:
   - javascript
   - tools
 ---
-webpack is a bundler, so it is good at bundling things. Out of the box it only
+webpack is a bundler which means it is good at bundling things. Out of the box it only
 understands JavaScript's `import` and `require` statements and because of that
 can just bundle JavaScript. If you give it an entry point[^1], it will start
 trawling through your code and bundle everything finds at `import` and
@@ -33,7 +33,7 @@ module.exports = {
 `output` object on line 6 tells it in what directory to output the bundle and
 what to name it.
 
-So, what happens if we give webpack the basic snippet of code below?
+What happens if we give webpack the basic snippet of code below?
 
 `src/main.js`:
 {{< highlight JavaScript "linenos=inline" >}}

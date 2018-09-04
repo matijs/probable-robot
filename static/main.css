@@ -109,6 +109,19 @@ a:hover {
   outline: none;
 }
 
+/* footnote links */
+a[href^="#fn"] {
+  text-decoration: none;
+}
+
+.footnote-ref {
+  font-size: .7em;
+  margin-left: .125em;
+  position: relative;
+  top: -.5em;
+  vertical-align: baseline;
+}
+
 .toc {
   list-style: none;
   padding: 0;
