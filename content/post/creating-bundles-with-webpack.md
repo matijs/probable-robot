@@ -7,9 +7,9 @@ tags:
   - javascript
   - tools
 ---
-webpack is a bundler so it is good at bundling things. Out of the box it only
+webpack is a bundler, so it is good at bundling things. Out of the box it only
 understands JavaScript's `import` and `require` statements and because of that
-can only bundle JavaScript. If you give it an entry point[^1], it will start
+can just bundle JavaScript. If you give it an entry point[^1], it will start
 trawling through your code and bundle everything finds at `import` and
 `require` statements into one bundle[^2].
 
@@ -61,10 +61,9 @@ This bundle will be named and written in the directory as specified in the
 webpack configuration. In this case we will end up with a file named
 `main.bundle.js` in the `dist/` directory of the root of our project.
 
-So that is how webpack does its bundling in a nutshell. This has only limited
-usefulness because by default webpack only knows how to bundle whatever code it
-picks up from `import` and `require` statements. In the next article we will
-see how we can make it a lot more useful.
+That is how webpack does its bundling in a nutshell. Because it only knows
+about `import` and `require` it is not extremely useful out of the box. In the
+next article we will see how we can make it a lot more useful.
 
 [^1]: As of webpack 4 if you do not provide an entry point, it will look for `src/index.js`.
 [^2]: If you give webpack more than one entry point you will end up with an equal amount of bundles.
