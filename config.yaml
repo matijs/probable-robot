@@ -6,7 +6,7 @@ enableGitInfo: true
 pygmentsUseClasses: true
 
 permalinks:
-  post: /:year/:month/:title/
+  post: /:year/:month/:slug/
 
 # Blackfriday Markdown settings
 FootnoteReturnLinkContents: "↩︎"
