@@ -1,5 +1,6 @@
 ---
 title: "min() in CSS vs. min() in LibSass"
+slug: min-in-css-vs-min-in-libsass
 date: 2020-05-18T14:48:45+02:00 
 ---
 
