@@ -1,0 +1,12 @@
+{
+  "proseWrap": "always",
+  "singleQuote": true,
+  "overrides": [
+    {
+      "files": ["*.css", "*.scss", "*.yml"],
+      "options": {
+        "singleQuote": false
+      }
+    }
+  ]
+}

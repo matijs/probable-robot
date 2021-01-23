@@ -1,0 +1,28 @@
+[build]
+  publish = "public/"
+  command = "eleventy"
+
+[[headers]]
+  for = "/*"
+
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    Content-Security-Policy = """\
+      frame-ancestors 'none'; \
+      font-src 'self'; \
+      base-uri 'self'; \
+    """
+
+[[redirects]]
+  from = "/2020/05/min-in-css-vs-min-in-libsass/"
+  to = "/2020/05/min()-in-css-vs.-min()-in-libsass/"
+  status = 301
+
+[[redirects]]
+  from = "/2019/05/quickly-toggle-hidden-files-in-macoss-finder/"
+  to = "/2019/05/quickly-toggle-hidden-files-in-macos's-finder/"
+  status = 301

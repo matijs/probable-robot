@@ -1,38 +1,42 @@
 ---
-title: "CSS Custom Properties in Sass"
+title: 'CSS Custom Properties in Sass'
 date: 2019-01-31T17:51:27+01:00
+keywords:
+  - CSS
+  - CCS custom properties
+  - CSS variables
+  - Sass
 ---
+
 ## TL;DR
 
-Use `--my-var: #{$my-sass-variable};` to be able to use Sass variables as
-values for CSS Custom Properties.
+Use `--my-var: #{$my-sass-variable};` to be able to use Sass variables as values
+for CSS Custom Properties.
 
 ## The problem
 
 Let's say you have the following SVG of a circle with an exclamation mark that
 you want to inline in your markup.
 
-{{< highlight XML >}}
+```svg
 <svg height="48" width="48" viewBox="0 0 48 48">
   <circle fill="currentColor" cx="24" cy="24" r="20" />
-  <rect fill="#fff" x="21" y="10" width="6" height="18"
-      style="fill: var(--fill, #fff)" />
-  <circle fill="#fff" cx="24" cy="35" r="5"
-      style="fill: var(--fill, #fff)" />
+  <rect fill="#fff" x="21" y="10" width="6" height="18" style="fill: var(--fill, #fff)" />
+  <circle fill="#fff" cx="24" cy="35" r="5" style="fill: var(--fill, #fff)" />
 </svg>
-{{< /highlight >}}
+```
 
 If you want to change just one colour, in this case the circle, you can use a
-`fill` attribute with `currentColor` as its value. This allows you to change
-the background colour of the circle using SCSS, like so:
+`fill` attribute with `currentColor` as its value. This allows you to change the
+background colour of the circle using SCSS, like so:
 
-{{< highlight SCSS "linenos=inline" >}}
+```scss
 $dark-blue: #ff1493;
 
 svg {
   color: $dark-blue;
 }
-{{< /highlight >}}
+```
 
 This works perfectly fine but it is limited to just one colour. CSS Custom
 Properties can help if you wanted to change more than just one colour.
@@ -43,32 +47,31 @@ CSS Custom Properties. The `style` attribute in the SVG above uses a custom
 property `--fill` that can be given a value in SCSS to apply a different fill
 colour [^1]. In SCSS it looks like this, but unfortunately this does not work.
 
-{{< highlight SCSS "linenos=inline" >}}
+```scss
 $dark-blue: #ff1493;
 $yellow: #800080;
 
 svg {
-  color: $dark-blue;
-  // this does not work as expected
+  color: $dark-blue; // this does not work as expected
   --fill: $yellow;
 }
-{{< /highlight >}}
+```
 
 What ended up in the browser was the following:
 
-{{< highlight CSS >}}
+```css
 svg {
   color: #ff1493;
   --fill: $yellow;
 }
-{{< /highlight >}}
+```
 
 This obviously does not work and resulted in a black exclamation mark on a dark
 blue background instead of the yellow exclamation mark that was expected.
 
 In order to get this to work we need to use Sass’s interpolation `#{}` like so:
 
-{{< highlight SCSS "linenos=inline" >}}
+```scss
 $dark-blue: #ff1493;
 $yellow: #800080;
 
@@ -76,7 +79,7 @@ svg {
   color: $dark-blue;
   --fill: #{$yellow};
 }
-{{< /highlight >}}
+```
 
 Et voilá, a beautiful multicolour SVG with proper fallback in browsers that do
 not support Custom Properties.
@@ -99,4 +102,6 @@ not support Custom Properties.
 
 Ok, so maybe not yellow on dark blue, but still pretty.
 
-[^1]: It also still has a fallback value of `#fff` in case the variable was not set in the CSS of a browser that supports CSS Custom Properties.
+[^1]:
+    It also still has a fallback value of `#fff` in case the variable was not
+    set in the CSS of a browser that supports CSS Custom Properties.

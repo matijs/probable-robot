@@ -1,23 +1,24 @@
 ---
 title: "Quickly toggle hidden files in macOS's Finder"
 date: 2019-05-01T22:10:34+02:00
-tags:
+keywords:
   - macOS
   - Finder
   - keyboard shortcut
+  - hidden file
 ---
 
 By default macOS's Finder will not show hidden files. This can be overridden
 using the `defaults` command line utility and restarting Finder.
 
-{{< highlight bash >}}
+```bash
 $ defaults write com.apple.finder AppleShowAllFiles -bool TRUE
 $ killall Finder
-{{< /highlight >}}
+```
 
-However, this will **always** show all hidden files until the above is undone
-by replacing `TRUE` with `FALSE`. This looks messy and may not be what you want
-and having to retype the above snippet every time is not very convenient.
+However, this will **always** show all hidden files until the above is undone by
+replacing `TRUE` with `FALSE`. This looks messy and may not be what you want and
+having to retype the above snippet every time is not very convenient.
 
 As it turns out, since macOS Sierra there is a keyboard shortcut that will
 toggle the visibility of hidden files and folders:  

@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^0.11.1"
+  },
+  "devDependencies": {
+    "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.6",
+    "luxon": "^1.25.0",
+    "prettier": "^2.2.1"
+  }
+}

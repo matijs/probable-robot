@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/darcula.css" />
+    <meta name="keywords" content="{{  keywords }}" />
+  </head>
+  <body>
+    <main class="content">
+    {% block main %}
+      {{ content | safe }}
+    {% endblock %}
+    </main>
+  </body>
+</html>

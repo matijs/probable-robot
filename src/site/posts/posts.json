@@ -1,0 +1,5 @@
+{
+  "permalink": "/{{ page.date | date: '%Y/%m' }}/{{ title | slug }}/index.html",
+  "layout": "layouts/post.njk",
+  "tags": "posts"
+}
