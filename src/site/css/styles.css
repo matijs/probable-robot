@@ -9,6 +9,27 @@
   --outrageous-orange: 12.3 100% 60.78%;
   --madison: 210 25% 25.1%;
   --cararra: 45.6 40.98% 88.04%;
+
+  --text-color: var(--cararra);
+  --background-color: var(--madison);
+  --hover-color: var(--outrageous-orange);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --text-color: var(--madison);
+    --background-color: var(--cararra);
+  }
+}
+
+[data-color-scheme="light"] {
+  --text-color: var(--madison);
+  --background-color: var(--cararra);
+}
+
+[data-color-scheme="dark"] {
+  --text-color: var(--cararra);
+  --background-color: var(--madison);
 }
 
 ::-moz-selection {
@@ -28,12 +49,13 @@ html {
 }
 
 body {
-  background-color: hsl(var(--madison));
-  color: hsl(var(--cararra));
+  background-color: hsl(var(--background-color));
+  color: hsl(var(--text-color));
   font: 1em/1.5 Palatino, serif;
   margin: 0;
   min-height: 100vh;
   padding: 1em;
+  transition: background-color 500ms ease-in-out, color 500ms ease-in-out;
 }
 
 main {
@@ -94,7 +116,7 @@ article {
 }
 
 a {
-  color: hsl(var(--cararra));
+  color: hsl(var(--text-color));
 }
 
 a:focus {
@@ -103,7 +125,7 @@ a:focus {
 }
 
 a:hover {
-  color: hsl(var(--outrageous-orange));
+  color: hsl(var(--hover-color));
   outline: none;
 }
 
@@ -182,4 +204,32 @@ footer dt::after {
 
 .footnotes li {
   margin: 1em 0;
+}
+
+.color-scheme-control {
+  display: flex;
+  font-size: 0.875rem;
+  justify-content: center;
+  margin: 2rem auto;
+  opacity: 0.25;
+  transition: opacity 1s ease-in-out 2s;
+  max-width: 12rem;
+}
+
+.color-scheme-control:hover {
+  opacity: 1;
+  transition: opacity 250ms ease-in-out;
+}
+
+.visually-hidden {
+  border: 0px;
+  clip-path: inset(50%);
+  clip: rect(0px, 0px, 0px, 0px);
+  height: 1px;
+  margin: 0px -1px -1px 0px;
+  overflow: hidden;
+  padding: 0px;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }

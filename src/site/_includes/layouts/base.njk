@@ -8,13 +8,46 @@
     <link rel="stylesheet" href="/css/darcula.css" />
     <meta name="author" content="{{ settings.author }}" />
     <meta name="description" content="{{ description }}" />
-    <meta name="keywords" content="{{  keywords }}" />
+    <meta name="keywords" content="{{ keywords }}" />
+    <script>
+      const matchesScheme = (prefersLight) => (prefersLight ? 'light' : 'dark');
+      const mql = window.matchMedia('(prefers-color-scheme: light)');
+      const storedColorScheme = window.localStorage.getItem('color-scheme');
+      const systemColorScheme = matchesScheme(mql.matches);
+      const colorScheme = storedColorScheme || systemColorScheme;
+      function handleChange({ matches }) {
+        document.getElementById(matchesScheme(matches)).checked = true;
+      }
+      if (storedColorScheme) {
+        document.documentElement.dataset.colorScheme = colorScheme;
+      } else {
+        mql.addEventListener('change', handleChange);
+      }
+    </script>
   </head>
   <body>
     <main>
-    {%- block main %}
+      {%- block main %}
       {{ content | safe }}
-    {% endblock -%}
+      {% endblock -%}
     </main>
+    <fieldset class="color-scheme-control" id="color-scheme-control">
+      <legend>Color scheme</legend>
+      <label for="dark">Dark</label>
+      <input type="radio" value="dark" name="color-scheme" id="dark" />
+      <label for="light">Light</label>
+      <input type="radio" value="light" name="color-scheme" id="light" />
+    </fieldset>
+    <script>
+      document.getElementById(colorScheme).checked = true;
+      document
+        .getElementById('color-scheme-control')
+        .addEventListener('change', ({ target }) => {
+          const { value } = target;
+          document.documentElement.dataset.colorScheme = value;
+          window.localStorage.setItem('color-scheme', value);
+          mql.removeEventListener('change', handleChange);
+        });
+    </script>
   </body>
 </html>
