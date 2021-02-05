@@ -15,7 +15,7 @@
       const storedColorScheme = window.localStorage.getItem('color-scheme');
       const systemColorScheme = matchesScheme(mql.matches);
       const colorScheme = storedColorScheme || systemColorScheme;
-      function handleChange({ matches }) {
+      const handleChange = ({ matches }) => {
         document.getElementById(matchesScheme(matches)).checked = true;
       }
       if (storedColorScheme) {
@@ -32,16 +32,32 @@
       {% endblock -%}
     </main>
     <fieldset class="color-scheme-control" id="color-scheme-control">
-      <legend>Color scheme</legend>
-      <label for="dark">Dark</label>
-      <input type="radio" value="dark" name="color-scheme" id="dark" />
-      <label for="light">Light</label>
-      <input type="radio" value="light" name="color-scheme" id="light" />
+      <legend class="visually-hidden">Color scheme</legend>
+      <input
+        type="radio"
+        value="dark"
+        name="color-scheme"
+        id="dark"
+        class="visually-hidden"
+      />
+      <label for="dark" aria-label="dark">
+        {%- include "icons/moon.svg" -%}
+      </label>
+      <input
+        type="radio"
+        value="light"
+        name="color-scheme"
+        id="light"
+        class="visually-hidden"
+      />
+      <label for="light" aria-label="light">
+        {%- include "icons/sun.svg" -%}
+      </label>
     </fieldset>
     <script>
-      document.getElementById(colorScheme).checked = true;
+      document.querySelector(`#${colorScheme}`).checked = true;
       document
-        .getElementById('color-scheme-control')
+        .querySelector('#color-scheme-control')
         .addEventListener('change', ({ target }) => {
           const { value } = target;
           document.documentElement.dataset.colorScheme = value;
