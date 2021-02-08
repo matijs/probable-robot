@@ -1,6 +1,7 @@
 ---
 title: CSS Custom Properties in Sass
 date: 2019-01-31T17:51:27+01:00
+lastMod: 2021-02-08T14:36:14+01:00
 description: How to make CSS Custom properties and Sass play nice together
 keywords:
   - CSS
@@ -22,7 +23,14 @@ you want to inline in your markup.
 ```svg
 <svg height="48" width="48" viewBox="0 0 48 48">
   <circle fill="currentColor" cx="24" cy="24" r="20" />
-  <rect fill="#fff" x="21" y="10" width="6" height="18" style="fill: var(--fill, #fff)" />
+  <rect
+    fill="#fff"
+    x="21"
+    y="10"
+    width="6"
+    height="18"
+    style="fill: var(--fill, #fff)"
+  />
   <circle fill="#fff" cx="24" cy="35" r="5" style="fill: var(--fill, #fff)" />
 </svg>
 ```
@@ -87,7 +95,7 @@ not support Custom Properties.
 
 <style>
   #css-custom-properties-in-sass {
-    \-\-fill: #800080;
+    --fill: #800080;
     color: #ff1493;
     height: 4em;
     width: auto;
@@ -95,10 +103,10 @@ not support Custom Properties.
     display: block;
   }
 </style>
-<svg id="css-custom-properties-in-sass"  height="48" width="48" viewBox="0 0 48 48">
-  <circle fill="currentColor" cx="24" cy="24" r="20"></circle>
-  <rect fill="#fff" x="21" y="10" width="6" height="18" style="fill: var(--fill, #fff)"></rect>
-  <circle fill="#fff" cx="24" cy="35" r="4" style="fill: var(--fill, #fff)"></circle>
+<svg id="css-custom-properties-in-sass" height="48" width="48" viewBox="0 0 48 48">
+  <circle fill="currentColor" cx="24" cy="24" r="20" />
+  <rect fill="#fff" x="21" y="10" width="6" height="18" style="fill: var(--fill, #fff)" />
+  <circle fill="#fff" cx="24" cy="35" r="4" style="fill: var(--fill, #fff)" />
 </svg>
 
 Ok, so maybe not yellow on dark blue, but still pretty.

@@ -17,6 +17,13 @@
       base-uri 'self'; \
     """
 
+[[headers]]
+  for = "/feeds/posts.json"
+
+  [headers.values]
+    Content-Type = "application/feed+json"
+
+
 [[redirects]]
   from = "/2020/05/min-in-css-vs-min-in-libsass/"
   to = "/2020/05/min()-in-css-vs.-min()-in-libsass/"
