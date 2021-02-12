@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --outrageous-orange: 12.3 100% 60.78%;
+  --madison: 210 25% 25.1%;
+  --cararra: 45.6 40.98% 88.04%;
+
+  --text-color: var(--cararra);
+  --background-color: var(--madison);
+  --data-viz-hover: var(--outrageous-orange);
+  --data-viz-active: var(--outrageous-orange);
+}
+
+:checked + label {
+  @apply opacity-100 text-outrageous-orange;
+}
+
+p {
+  @apply my-6;
+}
+
+a {
+  @apply underline;
+}
+
+a:hover {
+  @apply text-outrageous-orange;
+}

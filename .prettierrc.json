@@ -1,6 +1,7 @@
 {
   "proseWrap": "always",
   "singleQuote": true,
+  "quoteProps": "consistent",
   "overrides": [
     {
       "files": ["*.css", "*.scss", "*.yml"],
