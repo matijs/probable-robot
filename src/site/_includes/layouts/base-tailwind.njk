@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="{{ settings.lang }}" class="antialiased">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{{ title }} | {{ settings.siteTitle }}</title>
+    <link rel="stylesheet" href="/css/tailwind.css" />
+    <link rel="stylesheet" href="/css/darcula.css" />
+    <meta name="author" content="{{ author if author else settings.author }}" />
+    <meta name="description" content="{{ description }}" />
+    <meta name="keywords" content="{{ keywords }}" />
+    <link rel="alternate" type="application/feed+json" title="Posts JSON Feed" href="/feeds/posts.json" />
+    <script>
+      const matchesScheme = (prefersLight) => (prefersLight ? 'light' : 'dark');
+      const mql = window.matchMedia('(prefers-color-scheme: light)');
+      const storedColorScheme = window.localStorage.getItem('color-scheme');
+      const systemColorScheme = matchesScheme(mql.matches);
+      const colorScheme = storedColorScheme || systemColorScheme;
+      const handleChange = ({ matches }) => {
+        document.getElementById(matchesScheme(matches)).checked = true;
+      }
+      if (storedColorScheme) {
+        document.documentElement.dataset.colorScheme = colorScheme;
+      } else {
+        mql.addEventListener('change', handleChange);
+      }
+    </script>
+  </head>
+  <body class="min-h-screen p-4 font-serif leading-normal">
+    <main class="max-w-lg my-0 mx-auto">
+      <article class="mb-20">
+        <header class="flex flex-col">
+          <h1 class="text-4xl leading-5 my-4">{{ title }}</h1>
+          <p class="order-first my-6">
+            <time datetime="{{ date | isoDate }}">
+              {{- date | humanReadableDate -}}
+            </time>
+          </p>
+        </header>
+        {{ content | safe }}
+        <footer class="mt-16">
+          {%- set previous = collections.posts | getPreviousCollectionItem(page) %}
+          {% set next = collections.posts | getNextCollectionItem(page) -%}
+          <nav role="navigation" class="border-t border-current border-opacity-50">
+            <dl class="my-4">
+              {% if previous %}
+              <div class="mb-4">
+                <dt>Previous</dt>
+                <dd>
+                  <a href="{{ previous.url }}">{{ previous.data.title }}</a>
+                </dd>
+              </div>
+              {% endif %} {% if next %}
+              <div class="mb-4">
+                <dt>Next</dt>
+                <dd>
+                  <a href="{{ next.url }}">{{ next.data.title }}</a>
+                </dd>
+              </div>
+              {% endif %}
+            </dl>
+            <a href="/">Home</a>
+          </nav>
+        </footer>
+      </article>
+    </main>
+    <fieldset class="absolute right-4 top-4 h-6 w-16 flex justify-between" id="color-scheme-control">
+      <legend class="sr-only">Color scheme</legend>
+      <input
+        type="radio"
+        value="dark"
+        name="color-scheme"
+        id="dark"
+        class="sr-only"
+      />
+      <label for="dark" aria-label="dark" class="h-6 opacity-50 focus:opacity-100 hover:opacity-100 transition duration-250 ease-in-out">
+        <svg xmlns="http://www.w3.org/2000/svg" height="300" width="300" viewBox="0 0 64 64" aria-hidden="true" class="h-full w-full pointer-events-none">
+          <path fill="currentcolor" d="M56.352 39.396a1.992 1.992 0 00-2.237-.408 21.843 21.843 0 01-9.052 1.948c-12.13 0-22-9.869-22-22 0-3.145.656-6.189 1.949-9.049a1.998 1.998 0 00-2.646-2.646C13.07 11.443 7.063 20.744 7.063 30.937c0 14.337 11.664 26 26 26 10.192 0 19.494-6.007 23.697-15.302.343-.759.18-1.65-.408-2.239z" />
+        </svg>
+
+      </label>
+      <input
+        type="radio"
+        value="light"
+        name="color-scheme"
+        id="light"
+        class="sr-only"
+      />
+      <label for="light" aria-label="light" class="h-6 opacity-50 focus:opacity-100 hover:opacity-100 transition duration-250 ease-in-out">
+        <svg xmlns="http://www.w3.org/2000/svg" height="300" width="300" viewBox="0 0 64 64" aria-hidden="true" class="h-full w-full pointer-events-none">
+          <path fill="currentcolor" d="M32 20c-6.617 0-12 5.383-12 12s5.383 12 12 12 12-5.383 12-12-5.383-12-12-12zM32 16a2 2 0 002-2V8a2 2 0 00-4 0v6a2 2 0 002 2zM32 48a2 2 0 00-2 2v6a2 2 0 004 0v-6a2 2 0 00-2-2zM56 30h-6a2 2 0 000 4h6a2 2 0 000-4zM16 32a2 2 0 00-2-2H8a2 2 0 000 4h6a2 2 0 002-2zM44.728 21.272c.512 0 1.023-.195 1.414-.586l4.243-4.243a2 2 0 10-2.828-2.828l-4.243 4.243a2 2 0 001.414 3.414zM17.858 43.313l-4.243 4.243a2 2 0 102.828 2.828l4.243-4.243a2 2 0 10-2.828-2.828zM46.142 43.313a2 2 0 10-2.828 2.828l4.243 4.243c.391.391.902.586 1.414.586s1.023-.195 1.414-.586a2 2 0 000-2.828l-4.243-4.243zM17.858 20.686c.39.391.902.586 1.414.586s1.024-.195 1.414-.586a2 2 0 000-2.828l-4.243-4.243a2 2 0 10-2.828 2.828l4.243 4.243z" />
+        </svg>
+      </label>
+    </fieldset>
+    <script>
+      document.querySelector(`#${colorScheme}`).checked = true;
+      document
+        .querySelector('#color-scheme-control')
+        .addEventListener('change', ({ target }) => {
+          const { value } = target;
+          document.documentElement.dataset.colorScheme = value;
+          window.localStorage.setItem('color-scheme', value);
+          mql.removeEventListener('change', handleChange);
+        });
+    </script>
+  </body>
+</html>

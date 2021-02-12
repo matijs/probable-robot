@@ -208,7 +208,6 @@ footer dt::after {
 }
 
 .color-scheme-control {
-  align-items: center;
   border: none;
   display: flex;
   height: 1.5rem;
