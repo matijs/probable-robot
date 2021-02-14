@@ -4,15 +4,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>{{ title }} | {{ settings.siteTitle }}</title>
-    <link rel="stylesheet" href="/css/styles.css" />
-    <link rel="stylesheet" href="/css/darcula.css" />
     <meta name="author" content="{{ author if author else settings.author }}" />
     <meta name="description" content="{{ description }}" />
     <meta name="keywords" content="{{ keywords }}" />
     <link rel="alternate" type="application/feed+json" title="Posts JSON Feed" href="/feeds/posts.json" />
+    <meta name="color-scheme" content="dark light">
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/darcula.css" />
     <script>
-      const matchesScheme = (prefersLight) => (prefersLight ? 'light' : 'dark');
-      const mql = window.matchMedia('(prefers-color-scheme: light)');
+      const matchesScheme = (prefersDark) => (prefersDark ? 'dark' : 'light');
+      const mql = window.matchMedia('(prefers-color-scheme: dark)');
       const storedColorScheme = window.localStorage.getItem('color-scheme');
       const systemColorScheme = matchesScheme(mql.matches);
       const colorScheme = storedColorScheme || systemColorScheme;

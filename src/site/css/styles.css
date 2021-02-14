@@ -5,44 +5,44 @@
 }
 
 :root {
-  --white: 0 0% 100%;
-  --outrageous-orange: 12.3 100% 60.78%;
-  --madison: 210 25% 25.1%;
-  --cararra: 45.6 40.98% 88.04%;
+  --white: hsl(0 0% 100%);
+  --outrageous-orange: hsl(12.3 100% 60.78%);
+  --outrageous-orange-transparent: hsl(12.3 100% 60.78% / 40%);
+  --madison: hsl(210 25% 25.1%);
+  --cararra: hsl(45.6 40.98% 88.04%);
 
-  --text-color: var(--cararra);
+  --foreground-color: var(--cararra);
   --background-color: var(--madison);
-  --data-viz-hover: var(--outrageous-orange);
-  --data-viz-active: var(--outrageous-orange);
+  --support-color: var(--outrageous-orange);
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    --text-color: var(--madison);
+    --foreground-color: var(--madison);
     --background-color: var(--cararra);
   }
 }
 
 [data-color-scheme="light"] {
-  --text-color: var(--madison);
+  --foreground-color: var(--madison);
   --background-color: var(--cararra);
 }
 
 [data-color-scheme="dark"] {
-  --text-color: var(--cararra);
+  --foreground-color: var(--cararra);
   --background-color: var(--madison);
 }
 
 ::-moz-selection {
-  background-color: hsl(var(--outrageous-orange) / 50%);
+  background-color: var(--outrageous-orange-transparent);
 }
 
 ::selection {
-  background-color: hsl(var(--outrageous-orange) / 50%);
+  background-color: var(--outrageous-orange-transparent);
 }
 
 html {
-  background-color: hsl(var(--outrageous-orange));
+  background-color: var(--outrageous-orange);
   text-rendering: optimizeSpeed;
   text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
@@ -50,84 +50,71 @@ html {
 }
 
 body {
-  background-color: hsl(var(--background-color));
-  color: hsl(var(--text-color));
-  font: 1em/1.5 Palatino, serif;
+  background-color: var(--background-color);
+  color: var(--foreground-color);
+  font-family: Palatino, serif;
+  line-height: 1.5;
   margin: 0;
   min-height: 100vh;
-  padding: 1em;
-  transition: background-color 500ms ease-in-out, color 500ms ease-in-out;
+  padding: 1rem;
+  transition: background-color 150ms ease-in-out, color 150ms ease-in-out;
 }
 
 main {
   margin: 0 auto;
-  max-width: 30em;
+  max-width: 32rem;
 }
 
 h1 {
-  font-size: 1.5em;
+  font-size: 2rem;
   line-height: 1.125;
-  margin: 1em 0;
-}
-
-h1::after {
-  border-bottom: 1px solid hsl(var(--text-color) / 50%);
-  content: " ";
-  display: block;
-  margin-top: 1em;
-  width: 50%;
+  margin: 1rem 0;
 }
 
 h2 {
-  font-size: 1.25em;
-  line-height: 1.25;
-  margin: 0.8em 0;
+  font-size: 1rem;
+  margin: 1.5rem 0;
+}
+
+@media (min-width: 23.5rem) {
+  body {
+    font-size: 1.25rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    line-height: 1.125;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    line-height: 1.25;
+    margin: 1.5rem 0;
+  }
 }
 
 p {
-  margin: 1em 0;
-}
-
-@media (min-width: 20.0625em) {
-  html {
-    text-rendering: optimizeLegibility;
-  }
-
-  body {
-    font-size: 1.125em;
-  }
-
-  h1 {
-    font-size: 1.77778em;
-  }
-}
-
-@media (min-width: 60.0625em) {
-  body {
-    font-size: 1.25em;
-  }
-
-  h1 {
-    font-size: 2.4em;
-  }
+  margin: 1.5rem 0;
 }
 
 article {
-  margin-bottom: 5em;
+  margin-bottom: 5rem;
 }
 
 a {
-  color: hsl(var(--text-color));
+  color: inherit;
 }
 
 a:focus {
   outline: 1px dotted;
-  outline-offset: 0.125em;
+  outline-offset: 0.125rem;
 }
 
 a:hover {
-  color: hsl(var(--data-viz-hover));
+  color: var(--support-color);
   outline: none;
+  transition: color 250ms ease-in-out;
+  text-decoration-color: var(--foreground-color);
 }
 
 a[href^="#fn"] {
@@ -135,10 +122,10 @@ a[href^="#fn"] {
 }
 
 .footnote-ref {
-  font-size: 0.7em;
-  margin-left: 0.125em;
+  font-size: 0.75rem;
+  margin-left: 0.125rem;
   position: relative;
-  top: -0.5em;
+  top: -0.5rem;
   vertical-align: baseline;
 }
 
@@ -171,15 +158,15 @@ article header > :last-child {
 }
 
 article footer {
-  margin: 4em 0 0;
+  margin: 4rem 0 0;
 }
 
 footer nav {
-  border-top: 1px solid hsl(var(--cararra) / 50%);
+  border-top: 1px solid var(--cararra);
 }
 
 footer dl div {
-  margin: 0 0 1em;
+  margin: 0 0 1rem;
 }
 
 footer dt,
@@ -193,18 +180,18 @@ footer dt::after {
 
 /* Blackfriday footnotes */
 .footnotes ol {
-  padding-left: 1.125em;
+  padding-left: 1.125rem;
 }
 
 .footnotes hr {
   border: none;
-  border-top: 1px solid hsl(var(--cararra) / 50%);
-  margin: 1em 0;
+  border-top: 1px solid var(--cararra);
+  margin: 1rem 0;
   width: 50%;
 }
 
 .footnotes li {
-  margin: 1em 0;
+  margin: 1rem 0;
 }
 
 .color-scheme-control {
@@ -244,11 +231,11 @@ footer dt::after {
 }
 
 .color-scheme-control > :focus + label::before {
-  border: 1px dotted hsl(var(--text-color));
+  border: 1px dotted var(--foreground-color);
 }
 
 .color-scheme-control > :checked + label {
-  color: hsl(var(--data-viz-active));
+  color: var(--support-color);
 }
 
 .color-scheme-control > label > svg {
