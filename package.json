@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.6",
-    "@prettier/plugin-xml": "^0.13.0",
+    "@prettier/plugin-xml": "^0.13.1",
     "luxon": "^1.26.0",
     "markdown-it": "^12.0.4",
     "markdown-it-footnote": "^3.0.2",
