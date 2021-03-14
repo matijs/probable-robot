@@ -10,13 +10,16 @@
   --outrageous-orange-transparent: hsl(12.3 100% 60.78% / 40%);
   --madison: hsl(210 25% 25.1%);
   --madison-transparent: hsl(210 25% 25.1% / 40%);
+  --madison-highlight: hsl(210 25% 25.1% / 10%);
   --cararra: hsl(45.6 40.98% 88.04%);
   --cararra-transparent: hsl(45.6 40.98% 88.04% / 50%);
+  --cararra-highlight: hsl(45.6 40.98% 88.04% / 10%);
 
   --foreground-color: var(--cararra);
   --foreground-color-transparent: var(--cararra-transparent);
   --background-color: var(--madison);
   --background-color-transparent: var(--madison-transparent);
+  --background-color-highlight: var(--cararra-highlight);
   --support-color: var(--outrageous-orange);
 }
 
@@ -26,6 +29,7 @@
     --foreground-color-transparent: var(--madison-transparent);
     --background-color: var(--cararra);
     --background-color-transparent: var(--cararra-transparent);
+    --background-color-highlight: var(--madison-highlight);
   }
 }
 
@@ -34,6 +38,7 @@
   --foreground-color-transparent: var(--madison-transparent);
   --background-color: var(--cararra);
   --background-color-transparent: var(--cararra-transparent);
+  --background-color-highlight: var(--madison-highlight);
 }
 
 [data-color-scheme="dark"] {
@@ -41,6 +46,7 @@
   --foreground-color-transparent: var(--cararra-transparent);
   --background-color: var(--madison);
   --background-color-transparent: var(--madison-transparent);
+  --background-color-highlight: var(--cararra-highlight);
 }
 
 ::-moz-selection {
@@ -82,7 +88,7 @@ h1 {
 }
 
 h2 {
-  font-size: 1rem;
+  font-size: 1.125rem;
   margin: 1.5rem 0;
 }
 
@@ -97,7 +103,7 @@ h2 {
   }
 
   h2 {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     line-height: 1.25;
     margin: 1.5rem 0;
   }
@@ -124,12 +130,20 @@ a:hover {
   transition: color 250ms ease-in-out;
 }
 
+p > code {
+  background-color: var(--background-color-highlight);
+}
+
 .footnote-ref {
   font-size: 65%;
   margin-left: 0.125rem;
   position: relative;
   top: -0.5rem;
   vertical-align: baseline;
+}
+
+.footnote-backref {
+  text-decoration: none;
 }
 
 .posts {
