@@ -10,7 +10,7 @@ jobs:
         with:
           path: ~/.npm
           key: npm-${{ hashFiles('**/package-lock.json') }}
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2.1.5
         with:
           node-version: 12
       - run: npm install
