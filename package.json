@@ -2,7 +2,8 @@
   "private": true,
   "scripts": {
     "start": "eleventy --serve",
-    "build": "eleventy"
+    "build": "eleventy",
+    "prettier:check": "prettier --check ."
   },
   "dependencies": {
     "@11ty/eleventy": "^0.11.1",
