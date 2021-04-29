@@ -1,6 +1,7 @@
 ---
 title: Why npm-update might not do what you would expect
 date: 2021-04-28T19:25:00+01:00
+lastMod: 2021-04-29T09:45:00+01:00
 description:
   Why npm-update might not always do what you may expect because it respects
   semver and how caret versions below 1.0.0 are a bit special.
@@ -67,8 +68,21 @@ From the npm cli [documentation][4]:
 
 This is how `npm-update` also treats major version zero packages. See [“Caret
 Dependencies below 1.0.0"][5]. In other words Eleventy's version `0.11.1` and
-`0.12.1` might as well have been `11.1` and `12.1` respectively and, respecting
-semver, `npm-update` will not update from `^0.11.1` to `0.12.1` for this reason.
+`0.12.1` might as well have been `11.1` and `12.1` respectively. So, respecting
+semver, `npm-update` will **not** just update from `^0.11.1` to `0.12.1` for
+this reason.
+
+So how do you update Eleventy from `0.11.1` to `0.12.1`? Explicitly like so:
+
+```shell
+$ npm install @11ty/elevent@latest
+```
+
+Or
+
+```shell
+$ npm install @11ty/eleventy@0.12
+```
 
 [1]: https://docs.npmjs.com/cli/v7/commands/npm-update
 [2]: https://github.com/11ty/eleventy/releases/tag/v0.12.1
