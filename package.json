@@ -1,16 +1,27 @@
 {
   "private": true,
   "scripts": {
-    "start": "eleventy --serve",
-    "build": "eleventy",
+    "prestart": "rimraf public",
+    "start": "npm-run-all --parallel start:*",
+    "start:eleventy": "eleventy --serve",
+    "start:postcss": "postcss src/site/_includes/css --dir public/css --watch",
+    "prebuild": "rimraf public",
+    "build": "npm-run-all --parallel build:*",
+    "build:eleventy": "eleventy",
+    "build:postcss": "postcss src/site/_includes/css --dir public/css",
     "prettier:check": "prettier --check ."
   },
   "dependencies": {
     "@11ty/eleventy": "^0.12.1",
     "@11ty/eleventy-plugin-syntaxhighlight": "^3.1.0",
+    "cssnano": "^5.0.2",
     "luxon": "^1.26.0",
     "markdown-it": "^12.0.6",
-    "markdown-it-footnote": "^3.0.2"
+    "markdown-it-footnote": "^3.0.2",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.2.13",
+    "postcss-cli": "^8.3.1",
+    "rimraf": "^2.7.1"
   },
   "devDependencies": {
     "@prettier/plugin-xml": "^0.13.1",

@@ -12,7 +12,6 @@ module.exports = (config) => {
     }).use(markdownItFootnote)
   );
   config.addPlugin(syntaxHighlight);
-  config.addPassthroughCopy('src/site/css/');
   config.addPassthroughCopy('src/site/robots.txt');
   config.addWatchTarget('src/utils');
 
