@@ -12,6 +12,6 @@ jobs:
           key: npm-${{ hashFiles('**/package-lock.json') }}
       - uses: actions/setup-node@v2.1.5
         with:
-          node-version: 12
+          node-version: 16
       - run: npm install
       - run: npm run prettier:check
