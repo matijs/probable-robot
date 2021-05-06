@@ -4,9 +4,9 @@ eleventyExcludeFromCollections: true
 ---
 {
   "version": "https://jsonfeed.org/version/1.1",
-  "title": "{{ settings.siteTitle }}",
-  "home_page_url": "{{ settings.url }}",
-  "feed_url": "{{ settings.url }}/feeds/posts.json",
+  "title": "{{ settings.site.name }}",
+  "home_page_url": "{{ settings.site.url }}",
+  "feed_url": "{{ settings.site.url }}/feeds/posts.json",
   "authors": [
     {
       "name": "{{ settings.author.name }}"
@@ -16,7 +16,7 @@ eleventyExcludeFromCollections: true
   "items": [
     {%- for post in collections.posts | reverse %}
     {
-      "id": "{{ settings.url }}{{ post.url }}",
+      "id": "{{ settings.site.url }}{{ post.url }}",
       "title": "{{ post.data.title }}",
       "date_published": "{{ post.date.toISOString() }}",
       "date_modified": "{{ post.data.lastMod.toISOString() if post.data.lastMod else post.date.toISOString() }}",
@@ -26,7 +26,7 @@ eleventyExcludeFromCollections: true
         }
       ],
       "content_html": "{{ post.templateContent | safe | replace("\"", "\\\"") | replace("\n", " ") }}",
-      "url": "{{ settings.url }}{{ post.url }}"
+      "url": "{{ settings.site.url }}{{ post.url }}"
     }{%- if not loop.last %},{% endif -%}
     {% endfor %}
   ]
