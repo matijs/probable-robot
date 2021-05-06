@@ -9,7 +9,7 @@ eleventyExcludeFromCollections: true
   "feed_url": "{{ settings.url }}/feeds/posts.json",
   "authors": [
     {
-      "name": "{{ settings.author }}"
+      "name": "{{ settings.author.name }}"
     }
   ],
   "language": "{{ settings.lang }}",
@@ -22,7 +22,7 @@ eleventyExcludeFromCollections: true
       "date_modified": "{{ post.data.lastMod.toISOString() if post.data.lastMod else post.date.toISOString() }}",
       "authors": [
         {
-          "name": "{{ post.data.author if post.data.author else settings.author }}"
+          "name": "{{ post.data.author if post.data.author else settings.author.name }}"
         }
       ],
       "content_html": "{{ post.templateContent | safe | replace("\"", "\\\"") | replace("\n", " ") }}",

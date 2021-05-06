@@ -1,5 +1,8 @@
 {
-  "author": "Matijs Brinkhuis",
+  "author": {
+    "name": "Matijs Brinkhuis",
+    "email": "mail@matijsbrinkhuis.com"
+  },
   "url": "https://probablerobot.net",
   "siteTitle": "Probable Robot",
   "lang": "en-GB"
