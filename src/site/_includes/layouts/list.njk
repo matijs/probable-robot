@@ -9,7 +9,7 @@
       <a href="{{ post.url }}">{{ post.data.title }}</a>
     </h2>
     <p>
-      <time datetime="{{ post.date | isoDate }}">
+      <time datetime="{{ post.date | toISODate }}">
         {{- post.date | humanReadableDate -}}
       </time>
     </p>

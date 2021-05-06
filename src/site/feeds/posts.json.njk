@@ -1,6 +1,5 @@
 ---
 permalink: /feeds/posts.json
-eleventyExcludeFromCollections: true
 ---
 {
   "version": "https://jsonfeed.org/version/1.1",
@@ -12,7 +11,7 @@ eleventyExcludeFromCollections: true
       "name": "{{ settings.author.name }}"
     }
   ],
-  "language": "{{ settings.lang }}",
+  "language": "{{ settings.site.lang }}",
   "items": [
     {%- for post in collections.posts | reverse %}
     {

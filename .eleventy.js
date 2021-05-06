@@ -1,7 +1,11 @@
 const markdownIt = require('markdown-it');
 const markdownItFootnote = require('markdown-it-footnote');
-const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
-const { humanReadableDate, isoDate } = require('./src/utils/date.js');
+const {
+  humanReadableDate,
+  toRFC2822,
+  toISO,
+  toISODate,
+} = require('./src/utils/date.js');
 
 module.exports = (config) => {
   config.setLibrary(
@@ -11,12 +15,14 @@ module.exports = (config) => {
       linkify: false,
     }).use(markdownItFootnote)
   );
-  config.addPlugin(syntaxHighlight);
+  config.addPlugin(require('@11ty/eleventy-plugin-syntaxhighlight'));
   config.addPassthroughCopy('src/site/robots.txt');
   config.addWatchTarget('src/utils');
 
   config.addNunjucksFilter('humanReadableDate', humanReadableDate);
-  config.addNunjucksFilter('isoDate', isoDate);
+  config.addNunjucksFilter('toISODate', toISODate);
+  config.addNunjucksFilter('toISO', toISO);
+  config.addNunjucksFilter('toRFC2822', toRFC2822);
 
   return {
     dir: {

@@ -1,0 +1,30 @@
+---
+permalink: /feeds/posts.xml
+---
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ settings.site.name }}</title>
+    <description>{{ settings.site.description }}</description>
+    <language>{{ settings.site.lang }}</language>
+    <link>{{ settings.site.url }}</link>
+    <managingEditor>{{ settings.author.email }} ({{ settings.author.name }})</managingEditor>
+    <webMaster>{{ settings.author.email }} ({{ settings.author.name }})</webMaster>
+    <atom:link href="{{ settings.site.url }}/feeds/posts.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>{{ (collections.posts | last).date | toRFC2822 }}</lastBuildDate>
+    {%- for post in collections.posts | reverse %}
+    <item>
+      <title>{{ post.data.title }}</title>
+      <link>{{ settings.site.url + post.url }}</link>
+      <pubDate>{{ post.date | toRFC2822 }}</pubDate>
+      <atom:updated>{{ (post.data.lastMod if post.data.lastMod else post.date) | toISO }}</atom:updated>
+      <guid>{{ settings.site.url + post.url }}</guid>
+      <description>
+        <![CDATA[
+          {{ post.templateContent | safe }}
+        ]]>
+      </description>
+    </item>
+    {%- endfor %}
+  </channel>
+</rss>

@@ -1,11 +1,12 @@
 {
   "site": {
     "name": "Probable Robot",
-    "url": "https://probablerobot.net"
+    "description": "An infrequent blog about interesting tidbits I've run into as a front-end developer",
+    "url": "https://probablerobot.net",
+    "lang": "en"
   },
   "author": {
     "name": "Matijs Brinkhuis",
-    "email": "mail@matijsbrinkhuis.com"
-  },
-  "lang": "en-GB"
+    "email": "mail@probablerobot.net"
+  }
 }

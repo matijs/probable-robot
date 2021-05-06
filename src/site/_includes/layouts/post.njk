@@ -7,7 +7,7 @@
   <header>
     <h1>{{ title }}</h1>
     <p>
-      <time datetime="{{ date | isoDate }}">
+      <time datetime="{{ date | toISODate }}">
         {{- date | humanReadableDate -}}
       </time>
     </p>
