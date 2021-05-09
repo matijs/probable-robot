@@ -68,11 +68,14 @@ html {
 body {
   background-color: var(--background-color);
   color: var(--foreground-color);
-  font-family: Palatino, serif;
-  line-height: 1.5;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-weight: 300;
+  line-height: 1.6;
   margin: 0;
   min-height: 100vh;
-  padding: 1rem 1rem 25vh;
+  padding: 1rem 1rem 25vh; /* allow scrolling past the bottom of the page */
   transition: background-color 150ms ease-in-out, color 150ms ease-in-out;
 }
 
@@ -113,6 +116,12 @@ p {
   margin: 1.5rem 0;
 }
 
+blockquote {
+  border-left: 0.125rem dotted var(--foreground-color-transparent);
+  margin: 1.5rem 0;
+  padding: 0 1.5rem;
+}
+
 a {
   color: inherit;
   text-decoration-thickness: 1px;
@@ -127,11 +136,15 @@ a:focus {
 a:hover {
   color: var(--support-color);
   outline: none;
-  transition: color 250ms ease-in-out;
+  transition: color 150ms ease-in-out;
 }
 
 p > code {
   background-color: var(--background-color-highlight);
+  border-radius: 0.25rem;
+  display: inline-block;
+  font-size: 90%;
+  padding: 0 0.125rem;
 }
 
 .footnote-ref {
@@ -148,23 +161,15 @@ p > code {
   text-decoration: none;
 }
 
-.posts {
+.toc {
   list-style: none;
   padding: 0;
 }
 
-.posts li {
+.toc > li {
+  border-bottom: 1px solid var(--foreground-color-transparent);
   padding: 0;
-  position: relative;
-}
-
-.posts a::after {
-  content: " ";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  margin: 1rem 0;
 }
 
 article header {
@@ -237,7 +242,7 @@ footer dt::after {
   height: 1.5rem;
   opacity: 0.5;
   position: relative;
-  transition: opacity 250ms ease-in-out;
+  transition: opacity 150ms ease-in-out;
   width: 1.5rem;
 }
 
