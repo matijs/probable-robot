@@ -15,7 +15,9 @@ module.exports = (config) => {
       linkify: false,
     }).use(markdownItFootnote)
   );
-  config.addPlugin(require('@11ty/eleventy-plugin-syntaxhighlight'));
+  config.addPlugin(require('@11ty/eleventy-plugin-syntaxhighlight'), {
+    preAttributes: { tabindex: 0 },
+  });
   config.addPassthroughCopy('src/site/robots.txt');
   config.addWatchTarget('src/utils');
 
